@@ -25,7 +25,7 @@ See:
 First, install the build from npm:
 
 ```bash
-npm install --save @ckeditor/ckeditor5-build-classic
+npm i @jesse541/ckeditor5-build-classic
 ```
 
 And use it in your website:
@@ -34,7 +34,7 @@ And use it in your website:
 <div id="editor">
 	<p>This is the editor content.</p>
 </div>
-<script src="./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+<script src="./node_modules/@jesse541/ckeditor5-build-classic/build/ckeditor.js"></script>
 <script>
 	ClassicEditor
 		.create( document.querySelector( '#editor' ) )
@@ -50,19 +50,24 @@ And use it in your website:
 Or in your JavaScript application:
 
 ```js
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import * as ClassicEditor from '@jesse541/ckeditor5-build-classic';
 
 // Or using the CommonJS version:
 // const ClassicEditor = require( '@ckeditor/ckeditor5-build-classic' );
 
 ClassicEditor
-	.create( document.querySelector( '#editor' ) )
-	.then( editor => {
-		window.editor = editor;
-	} )
-	.catch( error => {
-		console.error( 'There was a problem initializing the editor.', error );
-	} );
+    .create( document.querySelector( '#editor' ), {
+        plugins: [ WordCount, ... ],
+        wordCount: {
+            onUpdate: stats => {
+                // Prints the current content statistics.
+                console.log( `Characters: ${ stats.characters }\nWords: ${ stats.words }` );
+            }
+        }
+    } )
+    .then( ... )
+    .catch( ... );
+
 ```
 
 **Note:** If you are planning to integrate CKEditor 5 deep into your application, it is actually more convenient and recommended to install and import the source modules directly (like it happens in `ckeditor.js`). Read more in the [Advanced setup guide](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/advanced-setup.html).

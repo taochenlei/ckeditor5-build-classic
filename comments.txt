@@ -1,0 +1,31 @@
+npm install --save-dev @ckeditor/ckeditor5-alignment
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+
+
+npm install --save @ckeditor/ckeditor5-word-count
+import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
+
+
+npm install --save @ckeditor/ckeditor5-basic-styles
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
+
+import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
+import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
+import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
+import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
+import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
+import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
+
+yarn run build
+
+git fetch upstream
+git merge upstream/stable
+
+
+
+	wordCount: {
+		onUpdate: stats => {
+			// Prints the current content statistics.
+			console.log( `Characters: ${ stats.characters }\nWords: ${ stats.words }` );
+		}
+	}
